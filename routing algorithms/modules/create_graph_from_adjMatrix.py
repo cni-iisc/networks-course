@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
+import collections  #for converting to adjacency list
 
 class Node:
   def __init__(self, data=None, indexLocation=None):
@@ -28,6 +29,9 @@ class Graph:
     for i in range(len(self.nodes)):
       self.nodes[i].index = i
 
+  def get_nodeList(self):
+    return self.nodes
+    
   def get_adjMatrix(self):
     return self.adjMatrix
 
@@ -70,6 +74,16 @@ class Graph:
   def getNode(self, index):
     return self.nodes[index]
 
+  def get_adjacencyList(self):
+    adjList = collections.defaultdict(dict)
+    for i in range(len(self.adjMatrix)):
+      for j in range(len(self.adjMatrix[i])):
+        if self.adjMatrix[i][j] != 0:
+          adjList[i][j] = self.adjMatrix[i][j]
+
+    self.adjList = adjList
+    return adjList
+
   def disconnect(self, node1, node2):
     self.disconnect_dir(node1, node2)
     self.disconnect_dir(node2, node1)
@@ -96,57 +110,13 @@ class Graph:
       row.append(0)     
     self.adjMatrix.append([0] * (len(self.adjMatrix) + 1))
  
-
+  def get_vertexList(self, n):
+      if n in self.adjList:
+          return self.adjList[n]
+      else:
+          return None
   # #compute centrality
   # #compute degree
   # #determine connectedness of the graph - networkx
   # # determine clustering coefficient 
-  # def standardDijkstra(self, node):
-  #     nodenum = self.get_nodeIndex(node) 
-
-  #     # Make an array keeping track of distance from node to any node
-  #     # in self.nodes. Initialize to infinity for all nodes but the 
-  #     # starting node, keep track of "path" which relates to distance.
-  #     # Index 0 = distance, index 1 = node hops
-  #     dist = [None] * len(self.nodes)
-  #     for i in range(len(dist)):
-  #         dist[i] = [float("inf")]
-  #         print(self.nodes)
-  #         print(self.nodes)
-  #         dist[i].append([self.nodes[nodenum]])
-      
-  #     dist[nodenum][0] = 0
-  #     # Queue of all nodes in the graph
-  #     # Note the integers in the queue correspond to indices of node
-  #     # locations in the self.nodes array
-  #     queue = [i for i in range(len(self.nodes))]
-  #     # Set of numbers seen so far
-  #     seen = set()
-  #     while len(queue) > 0:
-  #         # Get node in queue that has not yet been seen
-  #         # that has smallest distance to starting node
-  #         min_dist = float("inf")
-  #         min_node = None
-  #         for n in queue: 
-  #             if dist[n][0] < min_dist and n not in seen:
-  #                 min_dist = dist[n][0]
-  #                 min_node = n
-          
-  #         # Add min distance node to seen, remove from queue
-  #         queue.remove(min_node)
-  #         seen.add(min_node)
-  #         # Get all next hops 
-  #         connections = self.connectionsFrom(min_node)
-  #         # For each connection, update its path and total distance from 
-  #         # starting node if the total distance is less than the current distance
-  #         # in dist array
-  #         print("current node %s" % min_node)
-  #         for (node, weight) in connections: 
-  #             tot_dist = weight + min_dist
-  #             if tot_dist < dist[node.index][0]:
-  #                 dist[node.index][0] = tot_dist
-  #                 dist[node.index][1] = list(dist[min_node][1])
-  #                 dist[node.index][1].append(node)
-  #                 print("Distance from Node %s to Node %s is of weight %d" % (min_node, node.index, weight))
-  #         print("-------------------------------------------------")
-  #     return dist  
+  

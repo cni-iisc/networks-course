@@ -1,5 +1,6 @@
 from create_graph_from_adjMatrix import *
 from visualize_graph import *
+from pprint import pprint
 
 a = Node()
 b = Node()
@@ -17,9 +18,18 @@ graphs.connect(b,d,4)
 graphs.connect(c,d,1)
 graphs.connect(c,f,10)
 graphs.connect(d,e,3)
+adjacentMatrix = graphs.get_adjMatrix()
 
-def dijkstra(graph, sourceNode, nodeList):
+pprint(adjacentMatrix)
+
+print(graphs.get_adjacencyList())
+#visualGraph =  visualizeGraph(adjacentMatrix)
+
+shortestPathList = []
+
+def dijkstra(graph, sourceNode):
     nodenum = graph.get_nodeIndex(sourceNode) 
+    nodeList = graph.get_nodeList()
 
     # Make an array keeping track of distance from node to any node
     # in self.nodes. Initialize to infinity for all nodes but the 
@@ -62,12 +72,10 @@ def dijkstra(graph, sourceNode, nodeList):
                 dist[node.index][0] = tot_dist
                 dist[node.index][1] = list(dist[min_node][1])
                 dist[node.index][1].append(node)
-                print("Distance from Node %s to Node %s is of weight %d" % (min_node, node.index, weight))
+            shortestPathList.append((min_node, node.index))    
+            print("Distance from Node %s to Node %s is of weight %d at a distance of %d from sourceNode %s" % (min_node, node.index, weight, tot_dist, sourceNode.index)) 
         print("-------------------------------------------------")
-    return dist  
+        #displayPath(visualGraph, shortestPathList)
+    return dist
 
-
-print([(weight, [n.index for n in node]) for (weight, node) in dijkstra(graphs, a, [a, b, c, d, e, f])])
-#adjancentMatrix = graphs.get_adjMatrix()
-# visualizeGraph(adjancentMatrix)
-# print(a)
+#print([(weight, [n.index for n in node]) for (weight, node) in dijkstra(graphs, a)])
