@@ -1,2 +1,3 @@
-class create_graph_from_list():
-  
+class build_graph(object):
+  def __init__(self, adjList):
+    self.adjList = adjList
