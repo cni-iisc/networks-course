@@ -1,6 +1,10 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
+"""Creating a graph given adjacency matrix"""
+
+__author__      = "Micah Shute"
+__modified__    = "Sharad Shriram"
+__source__      = "https://medium.com/cantors-paradise/dijkstras-shortest-path-algorithm-in-python-d955744c7064" 
+
+
 import collections  #for converting to adjacency list
 
 class Node:
@@ -26,6 +30,7 @@ class Graph:
     #representation: row = source and column = destination
     self.adjMatrix = [[0]* column for _ in range(row)]
     self.nodes = nodeList
+    self.edgeList = []
     for i in range(len(self.nodes)):
       self.nodes[i].index = i
 
@@ -109,12 +114,14 @@ class Graph:
     for row in self.adjMatrix:
       row.append(0)     
     self.adjMatrix.append([0] * (len(self.adjMatrix) + 1))
- 
-  def get_vertexList(self, n):
-      if n in self.adjList:
-          return self.adjList[n]
-      else:
-          return None
+  
+  def get_all_edges(self):
+    for i in range(len(self.adjMatrix)):
+      for j in range(len(self.adjMatrix[i])):
+        if self.adjMatrix[i][j] != 0:
+          self.edgeList.append([i, j, self.adjMatrix[i][j]])
+    return self.edgeList
+    
   # #compute centrality
   # #compute degree
   # #determine connectedness of the graph - networkx

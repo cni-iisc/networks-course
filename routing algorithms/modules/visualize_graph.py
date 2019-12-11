@@ -31,3 +31,13 @@ def visualizeGraph(adjMatrix, nodeSet=None):
     plt.axis('off')
     plt.show()
     return graph
+
+def visualizeDiGraph(adjMatrix, nodeSet=None):
+    graph = nx.from_numpy_matrix(np.matrix(adjMatrix), create_using=nx.DiGraph)
+    layout = nx.shell_layout(graph)
+    labels = nx.get_edge_attributes(graph, 'weight')
+    nx.draw(graph, layout, node_size=800, with_labels=True)
+    nx.draw_networkx_edge_labels(graph, pos=layout, edge_labels=labels)
+    plt.axis('off')
+    plt.show()
+    return graph
