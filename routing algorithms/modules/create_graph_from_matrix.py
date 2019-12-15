@@ -14,22 +14,23 @@ class Node:
 
 class Graph:
   @classmethod #Graph class is implicitly passed as first argument
-  def create_from_nodeList(self, nodeList):
+  def create_from_nodeList(self, nodeList, directed=False):
     #if number of verices is specified
     if type(nodeList) == int:
       createdNodes = []
       for i in range(nodeList):
         createdNodes.append(Node(i))
-      return Graph(len(createdNodes), len(createdNodes), createdNodes)
+      return Graph(len(createdNodes), len(createdNodes), createdNodes, directed)
     #if vertices are explicitly specified as a list
     if type(nodeList) == list:
-      return Graph(len(nodeList), len(nodeList), nodeList)
+      return Graph(len(nodeList), len(nodeList), nodeList, directed)
 
-  def __init__(self, row, column, nodeList = None):
+  def __init__(self, row, column, nodeList = None, directed=False):
     #initializing the adjacency matrix
     #representation: row = source and column = destination
     self.adjMatrix = [[0]* column for _ in range(row)]
     self.nodes = nodeList
+    self.directed = directed
     self.edgeList = []
     for i in range(len(self.nodes)):
       self.nodes[i].index = i
@@ -59,8 +60,11 @@ class Graph:
 
   #creating weighted edges
   def connect(self, node1, node2, weight):
-    self.connect_dir(node1, node2, weight)
-    self.connect_dir(node2, node1, weight)
+    if self.directed == False:
+      self.connect_dir(node1, node2, weight)
+      self.connect_dir(node2, node1, weight)
+    else:
+      self.connect_dir(node1, node2, weight)
   
   #get the weight from the adjacency matrix
   def getWeight(self, node1, node2):
