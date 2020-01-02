@@ -113,10 +113,11 @@ class Graph:
     return self.adjList
 
   def get_adjMatrix(self):
-    self.adjMatrix = [[0]* len(self.adjList.keys()) for _ in range(len(self.adjList.keys()))]
+    self.adjMatrix = [[0]* len(self.nodes) for _ in range(len(self.nodes))]
     for key, value in self.adjList.items():
       for k, v in value.items():
         self.adjMatrix[key][k]= v
+
     return self.adjMatrix
 
   def set_previous(self, currentNode, previousNode):
