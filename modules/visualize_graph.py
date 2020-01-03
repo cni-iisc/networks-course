@@ -34,15 +34,15 @@ def animateGraph(nodeList, edgeList, filename):
 
 
 def displayPath(edgeList, filename):
-  savedGraph = os.path.abspath(os.getcwd() + "./"+filename+".gv")
+  savedGraph = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv")
   f = open(savedGraph, "r")
   data = f.readlines()
   f.close()
 
   g = open(savedGraph, "w+")
-  for index, line in enumerate(data):
+  for line in data:
     edgeLine = ""
-    
+    print(line)
     if re.findall("\w -- \w", line) and edgeLine == "":
       for (u, v, w) in edgeList:
         edge = line.strip().split()  #['\t0', '--', '1', '[label=1]\n']
@@ -50,7 +50,7 @@ def displayPath(edgeList, filename):
           edge[3] = edge[3].replace("]", ", color=red, penwidth=3]")
           edgeLine = "\t"+ edge[0] + " " + edge[1] + " " + edge[2]+ " " +edge[3] +"\n"
           line = edgeLine
-
+          print(edgeLine)
     g.write(line)
   g.close()
 
@@ -67,5 +67,5 @@ def visualizeGraph(graph, filename):
       visualGraph.node(str(gNode.index), str(gNode.index))
     for (u, v, w) in graph.get_allEdges():
       visualGraph.edge(str(u), str(v), label=str(w))
-    visualGraph.save(filename=os.path.abspath(os.getcwd() + "./"+filename+".gv"))
+    visualGraph.save(filename=os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv"))
     return graphviz.Source(visualGraph)
