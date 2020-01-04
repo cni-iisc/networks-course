@@ -19,7 +19,6 @@ class Graph:
     self.nodes = nodes
     self.directed = directed
     self.edgeList = []
-    self.graph_data = {}
     self.adjList = collections.defaultdict(dict)
     for i in range(len(nodes)):
       self.nodes[i].index = i
@@ -49,12 +48,11 @@ class Graph:
       self.nodes[node2Index].adjacent[node1Index] = weight
       self.adjList[node1Index][node2Index] = weight
       self.adjList[node2Index][node1Index] = weight
-
     else: # directed graph
       self.nodes[node1Index].adjacent[node2Index] = weight
       self.adjList[node1Index][node2Index] = weight
-    
     self.edgeList.append([node1Index, node2Index, weight])
+
   
   def delete_Edge(self, node1, node2):
     node1Index, node2Index = self.get_nodeIndex(node1), self.get_nodeIndex(node2)
@@ -63,6 +61,7 @@ class Graph:
       del self.nodes[node2Index].adjacent[node1Index]
       del self.adjList[node1Index][node2Index] 
       del self.adjList[node2Index][node1Index] 
+
     else:
       del self.nodes[node1Index].adjacent[node2Index]
       del self.adjList[node1Index][node2Index]
@@ -144,16 +143,3 @@ class Graph:
     else:
       return 0
 
-  def get_json(self):
-    node_data = []
-    for node in self.nodes:
-      node_data.append({"index": node.index, "name": node.data, "property": node.property})
-
-    edge_data = []
-    for edge in self.edgeList:
-      edge_data.append({"source": edge[0], "target": edge[1], "value": edge[2]})
-    
-    self.graph_data["isDirected"] = self.directed
-    self.graph_data["nodes"] = node_data
-    self.graph_data["edges"] = edge_data
-    return self.graph_data
