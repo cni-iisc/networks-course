@@ -5,14 +5,15 @@ import numpy as np
 import graphviz
 import tempfile
 
-def animateGraph(nodeList, edgeList, filename):
+def animateGraph(edgeList, filename):
+  #animFrames = []
+  #modify string and append to list
   pass
 
 
 
 
 def displayPath(edgeList, filename):
-  print(edgeList)
   savedGraph = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv")
   f = open(savedGraph, "r")
   data = f.readlines()
@@ -21,7 +22,7 @@ def displayPath(edgeList, filename):
   g = open(savedGraph, "w+")
   for line in data:
     edgeline = ""
-    if re.findall("\w -- \w", line) and edgeline == "":
+    if re.findall(r"\w -- \w", line) and edgeline == "":
       for (u, v, w) in edgeList:
         edge = line.strip().split()  #['\t0', '--', '1', '[label=1]\n']
         if (int(edge[0]) == u and int(edge[2]) == v) or (int(edge[0]) == v and int(edge[2]) == u) :
@@ -29,7 +30,7 @@ def displayPath(edgeList, filename):
           edge[3] = edge[3].replace(("[label="+weight+"]"), ("[label="+weight+", color=red, penwidth=3]"))
           edgeLine = "\t"+ edge[0] + " " + edge[1] + " " + edge[2]+ " " +edge[3] +"\n"
           line = edgeLine
-    if re.findall("\w -> \w", line) and edgeline == "":
+    if re.findall(r"\w -> \w", line) and edgeline == "":
       for (u, v, w) in edgeList:
         edge = line.strip().split()  #['\t0', '--', '1', '[label=1]\n']
         if (int(edge[0]) == u and int(edge[2]) == v) :

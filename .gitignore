@@ -9,6 +9,9 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
+#graphViz
+*.gv
+
 # IPython
 profile_default/
 ipython_config.py
