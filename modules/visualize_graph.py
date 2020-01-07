@@ -1,17 +1,7 @@
 import os
 import re
 import json
-import numpy as np
 import graphviz
-import tempfile
-
-def animateGraph(edgeList, filename):
-  #animFrames = []
-  #modify string and append to list
-  pass
-
-
-
 
 def displayPath(edgeList, filename):
   savedGraph = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv")
@@ -38,7 +28,6 @@ def displayPath(edgeList, filename):
           edge[3] = edge[3].replace(("[label="+weight+"]"), ("[label="+weight+", color=red, penwidth=3]"))
           edgeLine = "\t"+ edge[0] + " " + edge[1] + " " + edge[2]+ " " +edge[3] +"\n"
           line = edgeLine  
-
     g.write(line)
   g.close()
 
