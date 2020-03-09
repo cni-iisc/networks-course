@@ -2,14 +2,15 @@ import os
 import re
 import json
 import graphviz
+import tempfile
 
 def displayPath(edgeList, filename):
   savedGraph = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv")
   f = open(savedGraph, "r")
   data = f.readlines()
   f.close()
-
-  g = open(savedGraph, "w+")
+  temp = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+"_temp.gv")
+  g = open(temp, "w+")
   for line in data:
     edgeline = ""
     if re.findall(r"\w -- \w", line) and edgeline == "":
@@ -31,7 +32,7 @@ def displayPath(edgeList, filename):
     g.write(line)
   g.close()
 
-  return graphviz.Source.from_file(savedGraph)
+  return graphviz.Source.from_file(temp)
 
 
 
