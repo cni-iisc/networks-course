@@ -2,7 +2,6 @@ import os
 import re
 import json
 import graphviz
-import tempfile
 
 def displayPath(edgeList, filename):
   savedGraph = os.path.abspath(os.getcwd() + "/graphFiles/"+filename+".gv")
