@@ -26,7 +26,7 @@ We list the steps to run the notebooks in google colab.
  1. Open google colab : https://colab.research.google.com/
  2. From File menu, select "Open notebook".
  3. Select the GitHub tab.
- 4. In the search bar, paste the github link (the Github url for the notebook). For example, to open the notebook on Dijkstra, the github link is https://github.com/cni-iisc/module1_notebooks/blob/master/notebooks/1_dijkstra.ipynb
+ 4. In the search bar, paste the github link (the Github url for the notebook). For example, to open the notebook on Dijkstra, the github link is https://github.com/cni-iisc/computer-networks-course/blob/master/notebooks/1_dijkstra.ipynb
  5. Add the following two line to a cell on top of the notebook and execute:
            
            ``` 
