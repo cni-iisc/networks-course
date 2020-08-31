@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+=======
+
+# Created by https://www.gitignore.io/api/python,sublimetext,jupyternotebooks,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=python,sublimetext,jupyternotebooks,visualstudiocode
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+#graphViz
+*.gv
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+
+### Python ###
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -47,7 +72,10 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+<<<<<<< HEAD
 *.py,cover
+=======
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 .hypothesis/
 .pytest_cache/
 
@@ -55,6 +83,7 @@ coverage.xml
 *.mo
 *.pot
 
+<<<<<<< HEAD
 # Django stuff:
 *.log
 local_settings.py
@@ -65,6 +94,8 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+=======
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 # Scrapy stuff:
 .scrapy
 
@@ -74,6 +105,7 @@ docs/_build/
 # PyBuilder
 target/
 
+<<<<<<< HEAD
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -81,6 +113,8 @@ target/
 profile_default/
 ipython_config.py
 
+=======
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 # pyenv
 .python-version
 
@@ -91,16 +125,22 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
+<<<<<<< HEAD
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
+=======
+# celery beat schedule file
+celerybeat-schedule
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 
 # SageMath parsed files
 *.sage.py
 
+<<<<<<< HEAD
 # Environments
 .env
 .venv
@@ -110,6 +150,8 @@ ENV/
 env.bak/
 venv.bak/
 
+=======
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -117,6 +159,14 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
+<<<<<<< HEAD
+=======
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
 # mkdocs documentation
 /site
 
@@ -127,3 +177,51 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
+=======
+
+### SublimeText ###
+# Cache files for Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# Workspace files are user-specific
+*.sublime-workspace
+
+# Project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using Sublime Text
+# *.sublime-project
+
+# SFTP configuration file
+sftp-config.json
+
+# Package control specific files
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+Package Control.merged-ca-bundle
+Package Control.user-ca-bundle
+oscrypto-ca-bundle.crt
+bh_unicode_properties.cache
+
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/python,sublimetext,jupyternotebooks,visualstudiocode
+>>>>>>> 986223bc3a509b37d353114bc20fcc77269e644c
